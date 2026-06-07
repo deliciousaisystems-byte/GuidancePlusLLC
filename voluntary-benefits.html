@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Voluntary Benefits — Guidance Plus LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0d2240; --navy-mid: #1a3560; --navy-light: #2a4f8a;
+  --gold: #c9a24a; --gold-light: #e8c97a; --gold-pale: #fdf6e3;
+  --purple: #534ab7; --purple-mid: #7f77dd; --purple-pale: #eeedfe; --purple-border: #afa9ec;
+  --slate: #4a5568; --slate-light: #718096;
+  --bg: #f8f9fc; --white: #fff; --border: #e2e8f0; --text: #1a202c;
+  --radius: 12px; --radius-lg: 20px;
+  --shadow: 0 4px 24px rgba(13,34,64,0.08); --shadow-lg: 0 16px 56px rgba(13,34,64,0.15);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-mark { width: 36px; height: 36px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.nav-mark svg { width: 20px; height: 20px; fill: var(--gold); }
+.nav-name { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--navy); }
+.nav-sub { font-size: 10px; color: var(--slate-light); letter-spacing: 0.08em; text-transform: uppercase; }
+.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-right a { text-decoration: none; color: var(--slate); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+.nav-right a:hover, .nav-right a.active { color: var(--purple); }
+.nav-cta { background: var(--navy); color: var(--white) !important; padding: 10px 20px; border-radius: 8px; }
+.nav-cta:hover { background: var(--navy-mid) !important; color: var(--white) !important; }
+.breadcrumb { background: var(--purple-pale); border-bottom: 1px solid var(--purple-border); padding: 10px 2rem; font-size: 13px; color: var(--purple); }
+.breadcrumb a { color: var(--purple); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* HERO */
+.hero { background: linear-gradient(135deg, #2d2880 0%, #534ab7 50%, #7f77dd 100%); padding: 80px 2rem 64px; position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 55%); }
+.hero::after { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 5% 90%, rgba(13,34,64,0.35) 0%, transparent 50%); }
+.hero-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: start; position: relative; z-index: 1; }
+@media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; } }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.9); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 24px; }
+.hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(34px, 4.5vw, 52px); color: var(--white); line-height: 1.1; margin-bottom: 18px; }
+.hero h1 em { font-style: italic; color: rgba(255,255,255,0.7); }
+.hero-lead { font-size: 17px; color: rgba(255,255,255,0.72); line-height: 1.7; margin-bottom: 32px; max-width: 480px; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-white { background: var(--white); color: var(--purple); padding: 14px 28px; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; font-family:'DM Sans',sans-serif; }
+.btn-white:hover { background: rgba(255,255,255,0.9); transform: translateY(-1px); }
+.btn-ghost { background: rgba(255,255,255,0.1); color: var(--white); padding: 14px 28px; border-radius: 10px; font-weight: 500; font-size: 15px; text-decoration: none; border: 1px solid rgba(255,255,255,0.25); transition: background 0.2s; display: inline-flex; align-items: center; gap: 8px; cursor:pointer; font-family:'DM Sans',sans-serif; }
+.btn-ghost:hover { background: rgba(255,255,255,0.18); }
+
+/* EMPLOYER VALUE CARD */
+.value-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); border-radius: var(--radius-lg); padding: 28px; margin-top: 8px; }
+.vc-title { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+.vc-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+.vc-item:last-child { margin-bottom: 0; }
+.vc-icon { width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.vc-icon svg { width: 18px; height: 18px; fill: rgba(255,255,255,0.9); }
+.vc-label { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+.vc-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+/* COMMON */
+section { padding: 72px 2rem; }
+.inner { max-width: 1120px; margin: 0 auto; }
+.tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
+.heading { font-family: 'DM Serif Display', serif; font-size: clamp(26px, 3.2vw, 38px); color: var(--navy); line-height: 1.15; margin-bottom: 14px; }
+.sub { font-size: 16px; color: var(--slate); max-width: 540px; line-height: 1.7; }
+@media (max-width: 768px) { .nav-right > a:not(.nav-cta) { display: none; } }
+
+/* PRODUCTS GRID */
+.products { background: var(--white); }
+.products-header { margin-bottom: 48px; }
+.prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+@media (max-width: 900px) { .prod-grid { grid-template-columns: 1fr; } }
+.prod-card { border-radius: var(--radius-lg); border: 1.5px solid var(--border); padding: 28px; background: var(--bg); transition: box-shadow 0.25s, transform 0.2s; }
+.prod-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+.prod-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--purple-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.prod-icon svg { width: 24px; height: 24px; fill: var(--purple); }
+.prod-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.prod-card p { font-size: 13px; color: var(--slate); line-height: 1.65; margin-bottom: 16px; }
+.prod-example { font-size: 12px; color: var(--purple); font-weight: 600; background: var(--purple-pale); padding: 6px 12px; border-radius: 6px; display: inline-block; }
+
+/* CARRIERS */
+.carriers { background: var(--bg); }
+.carriers-header { margin-bottom: 48px; }
+.carriers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+@media (max-width: 768px) { .carriers-grid { grid-template-columns: 1fr; } }
+.carrier-card { background: var(--white); border-radius: var(--radius-lg); border: 1.5px solid var(--border); padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+.carrier-header { display: flex; align-items: center; gap: 16px; }
+.carrier-logo { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 20px; font-weight: 700; flex-shrink: 0; }
+.carrier-logo.aflac { background: #003087; color: #fff; }
+.carrier-logo.colonial { background: #c8102e; color: #fff; }
+.carrier-name { font-size: 20px; font-weight: 700; color: var(--navy); }
+.carrier-tagline { font-size: 13px; color: var(--slate-light); }
+.carrier-desc { font-size: 14px; color: var(--slate); line-height: 1.7; }
+.carrier-products { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.carrier-products li { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--slate); }
+.cp-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.aflac .cp-dot { background: #003087; }
+.colonial .cp-dot { background: #c8102e; }
+.carrier-cta { background: var(--purple-pale); color: var(--purple); border: 1.5px solid var(--purple-border); border-radius: 8px; padding: 11px 18px; font-size: 14px; font-weight: 600; cursor: pointer; font-family:'DM Sans',sans-serif; transition: all 0.2s; }
+.carrier-cta:hover { background: var(--purple); color: var(--white); border-color: var(--purple); }
+
+/* HOW IT WORKS */
+.how { background: var(--white); }
+.how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+@media (max-width: 768px) { .how-grid { grid-template-columns: 1fr; } }
+.step-list { margin-top: 36px; display: flex; flex-direction: column; gap: 0; }
+.step { display: flex; gap: 18px; padding-bottom: 26px; position: relative; }
+.step:not(:last-child)::before { content:''; position:absolute; left:18px; top:38px; bottom:0; width:2px; background:var(--border); }
+.step-n { flex-shrink:0; width:38px; height:38px; border-radius:50%; background:var(--purple); color:var(--white); font-family:'DM Serif Display',serif; font-size:17px; display:flex; align-items:center; justify-content:center; z-index:1; }
+.step h4 { font-size:15px; font-weight:600; color:var(--navy); margin-bottom:4px; margin-top:6px; }
+.step p { font-size:13px; color:var(--slate); line-height:1.6; }
+.employer-benefits { background: var(--purple-pale); border-radius: var(--radius-lg); padding: 28px; border: 1px solid var(--purple-border); }
+.eb-title { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:16px; }
+.eb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.eb-item { background: var(--white); border-radius: 10px; padding: 16px; border: 1px solid var(--border); }
+.eb-icon { width:32px; height:32px; border-radius:8px; background:var(--purple-pale); display:flex; align-items:center; justify-content:center; margin-bottom:10px; }
+.eb-icon svg { width:16px; height:16px; fill:var(--purple); }
+.eb-label { font-size:13px; font-weight:600; color:var(--navy); margin-bottom:3px; }
+.eb-desc { font-size:12px; color:var(--slate); line-height:1.5; }
+
+/* FAQ */
+.faq { background: var(--bg); }
+.faq-list { max-width:760px; display:flex; flex-direction:column; gap:10px; margin-top:40px; }
+.faq-item { border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:var(--white); }
+.faq-q { width:100%; background:none; border:none; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:var(--navy); cursor:pointer; text-align:left; transition:background 0.15s; }
+.faq-q:hover { background:var(--purple-pale); }
+.faq-chevron { width:18px; height:18px; flex-shrink:0; transition:transform 0.25s; }
+.faq-chevron path { stroke:var(--slate); stroke-width:2; fill:none; }
+.faq-a { max-height:0; overflow:hidden; transition:max-height 0.3s ease; font-size:14px; color:var(--slate); line-height:1.7; }
+.faq-a-inner { padding:0 22px 18px; }
+.faq-item.open .faq-a { max-height:220px; }
+.faq-item.open .faq-chevron { transform:rotate(180deg); }
+
+/* CTA */
+.cta-band { background: var(--purple); padding: 64px 2rem; text-align: center; position: relative; overflow: hidden; }
+.cta-band::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 0%, rgba(255,255,255,0.08) 0%, transparent 55%); }
+.cta-band h2 { font-family:'DM Serif Display',serif; font-size:clamp(24px,3vw,36px); color:var(--white); margin-bottom:12px; position:relative; }
+.cta-band p { font-size:16px; color:rgba(255,255,255,0.68); margin-bottom:32px; position:relative; }
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; position:relative; }
+.btn-cta-white { background:var(--white); color:var(--purple); padding:15px 32px; border-radius:10px; font-weight:600; font-size:15px; text-decoration:none; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all 0.2s; display:inline-flex; align-items:center; gap:8px; }
+.btn-cta-white:hover { background:rgba(255,255,255,0.9); transform:translateY(-1px); }
+.btn-cta-outline { background:transparent; color:var(--white); padding:15px 32px; border-radius:10px; font-weight:600; font-size:15px; text-decoration:none; border:1.5px solid rgba(255,255,255,0.35); transition:all 0.2s; display:inline-flex; align-items:center; gap:8px; }
+.btn-cta-outline:hover { background:rgba(255,255,255,0.12); }
+
+footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 48px 2rem 28px; }
+.footer-inner { max-width: 1120px; margin: 0 auto; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); gap: 40px; flex-wrap: wrap; }
+.footer-brand-name { font-family: 'DM Serif Display',serif; font-size: 18px; color: var(--white); }
+.footer-brand p { font-size: 13px; margin-top: 10px; max-width: 260px; }
+.footer-cols { display: flex; gap: 48px; flex-wrap: wrap; }
+.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 8px; transition: color 0.15s; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { display: flex; justify-content: space-between; padding-top: 22px; flex-wrap: wrap; gap: 10px; font-size: 12px; }
+
+.modal-overlay { display:none; position:fixed; inset:0; z-index:200; background:rgba(0,0,0,0.55); align-items:center; justify-content:center; padding:2rem; }
+.modal-overlay.open { display:flex; }
+.modal { background:var(--white); border-radius:var(--radius-lg); padding:40px; max-width:480px; width:100%; position:relative; box-shadow:var(--shadow-lg); animation:mIn 0.22s ease; }
+@keyframes mIn { from{opacity:0;transform:scale(0.95);}to{opacity:1;transform:none;} }
+.modal-x { position:absolute; top:14px; right:14px; background:none; border:none; cursor:pointer; font-size:18px; color:var(--slate); width:32px; height:32px; border-radius:6px; }
+.modal-x:hover { background:var(--bg); }
+.modal h2 { font-family:'DM Serif Display',serif; font-size:24px; color:var(--navy); margin-bottom:6px; }
+.modal p { font-size:14px; color:var(--slate); margin-bottom:22px; }
+.fg { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+.fg label { font-size:13px; font-weight:600; color:var(--navy); }
+.fg input, .fg select { padding:11px 14px; border:1.5px solid var(--border); border-radius:8px; font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text); outline:none; transition:border-color 0.2s; }
+.fg input:focus, .fg select:focus { border-color:var(--purple); box-shadow:0 0 0 3px rgba(83,74,183,0.12); }
+.modal-sub { width:100%; background:var(--purple); color:var(--white); padding:14px; border:none; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; cursor:pointer; }
+.modal-sub:hover { background:#443fa0; }
+.success-state { display:none; text-align:center; padding:20px 0; }
+.success-state h3 { font-family:'DM Serif Display',serif; font-size:22px; color:var(--navy); margin:16px 0 8px; }
+.success-state p { font-size:14px; color:var(--slate); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-mark"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.25 3.75 10.15 9 11.4C17.25 23.15 21 18.25 21 13V7l-9-5z"/></svg></div>
+    <div><div class="nav-name">Guidance Plus</div><div class="nav-sub">LLC — Employee Benefits</div></div>
+  </a>
+  <div class="nav-right">
+    <a href="pfl-dbl.html">PFL &amp; DBL</a>
+    <a href="section-125.html">Section 125</a>
+    <a href="voluntary-benefits.html" class="active">Voluntary Benefits</a>
+    <a href="#quote" class="nav-cta">Get a Free Quote</a>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="index.html">Home</a> &nbsp;›&nbsp; Voluntary Benefits</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Aflac · Colonial Life & More</div>
+      <h1>Voluntary Benefits That <em>Attract</em> &amp; Retain Talent</h1>
+      <p class="hero-lead">Give your employees access to critical protection — accident, illness, hospital, and life coverage — at no cost to your business. We handle enrollment, administration, and ongoing support.</p>
+      <div class="hero-actions">
+        <button class="btn-white" onclick="openModal()">Schedule a Benefits Review →</button>
+        <a href="#products" class="btn-ghost">See Coverage Options ↓</a>
+      </div>
+    </div>
+    <div class="value-card">
+      <div class="vc-title">Why employers offer voluntary benefits</div>
+      <div class="vc-item">
+        <div class="vc-icon"><svg viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8v2m0 12v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2m16 0h2"/></svg></div>
+        <div>
+          <div class="vc-label">$0 employer cost</div>
+          <div class="vc-desc">Premiums are 100% employee-paid through payroll deduction. No budget impact.</div>
+        </div>
+      </div>
+      <div class="vc-item">
+        <div class="vc-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+        <div>
+          <div class="vc-label">Stronger job offers</div>
+          <div class="vc-desc">A richer benefits package helps you compete for talent without raising salaries.</div>
+        </div>
+      </div>
+      <div class="vc-item">
+        <div class="vc-icon"><svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+        <div>
+          <div class="vc-label">Higher employee satisfaction</div>
+          <div class="vc-desc">Coverage for unexpected events reduces financial stress — and turnover.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="inner">
+    <div class="products-header">
+      <div class="tag">Coverage Types</div>
+      <h2 class="heading">Six types of voluntary coverage we offer</h2>
+      <p class="sub">Mix and match based on your workforce's needs. Employees choose what matters most to them — you offer it all.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+        <h3>Accident Insurance</h3>
+        <p>Cash benefits paid directly to employees when they suffer a covered accident — ER visits, fractures, dislocations, burns, and more. Fills the gaps left by major medical insurance.</p>
+        <span class="prod-example">Available through: Aflac, Colonial Life</span>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+        <h3>Critical Illness</h3>
+        <p>Lump-sum cash payments upon diagnosis of covered illnesses like cancer, heart attack, stroke, or kidney failure. Helps employees manage non-medical costs during treatment.</p>
+        <span class="prod-example">Available through: Aflac, Colonial Life</span>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div>
+        <h3>Hospital Indemnity</h3>
+        <p>Fixed daily or per-event cash benefits when an employee is hospitalized. Covers room and board, ICU stays, and outpatient surgery. Supplements health insurance deductibles.</p>
+        <span class="prod-example">Available through: Aflac, Colonial Life</span>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+        <h3>Short-Term Disability</h3>
+        <p>Employee-paid supplemental disability coverage that pays a percentage of income when an employee can't work due to illness, injury, or pregnancy — above and beyond the NY statutory minimum.</p>
+        <span class="prod-example">Available through: Colonial Life</span>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg></div>
+        <h3>Life &amp; Supplemental Life</h3>
+        <p>Voluntary term or whole life insurance that employees can elect above their employer-provided life benefit — often with simplified or guaranteed issue during enrollment periods.</p>
+        <span class="prod-example">Available through: Aflac, Colonial Life</span>
+      </div>
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></div>
+        <h3>Dental &amp; Vision (Voluntary)</h3>
+        <p>Standalone dental and vision plans employees can elect and pay for themselves — ideal for businesses that don't sponsor group dental or vision, or as a buy-up option.</p>
+        <span class="prod-example">Available through: multiple carriers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARRIERS -->
+<section class="carriers" id="carriers">
+  <div class="inner">
+    <div class="carriers-header">
+      <div class="tag">Our Carriers</div>
+      <h2 class="heading">Industry-leading voluntary benefit carriers</h2>
+      <p class="sub">We broker through two of the most recognized names in voluntary benefits — with access to other carriers based on your specific needs.</p>
+    </div>
+    <div class="carriers-grid">
+      <div class="carrier-card">
+        <div class="carrier-header">
+          <div class="carrier-logo aflac">Af.</div>
+          <div>
+            <div class="carrier-name">Aflac</div>
+            <div class="carrier-tagline">America's most recognized supplemental insurer</div>
+          </div>
+        </div>
+        <div class="carrier-desc">Aflac is the #1 provider of supplemental insurance in the U.S., known for fast, direct-to-employee claim payments. Their cash benefits help employees cover out-of-pocket expenses that health insurance doesn't pay.</div>
+        <ul class="carrier-products aflac">
+          <li><span class="cp-dot"></span>Accident insurance</li>
+          <li><span class="cp-dot"></span>Cancer/Critical illness coverage</li>
+          <li><span class="cp-dot"></span>Hospital indemnity</li>
+          <li><span class="cp-dot"></span>Life and term life insurance</li>
+          <li><span class="cp-dot"></span>Short-term disability</li>
+        </ul>
+        <button class="carrier-cta" onclick="openModal()">Enroll Your Team with Aflac →</button>
+      </div>
+      <div class="carrier-card">
+        <div class="carrier-header">
+          <div class="carrier-logo colonial">CL</div>
+          <div>
+            <div class="carrier-name">Colonial Life</div>
+            <div class="carrier-tagline">Trusted supplemental coverage since 1939</div>
+          </div>
+        </div>
+        <div class="carrier-desc">Colonial Life is one of the nation's leading providers of workplace voluntary benefits, with a strong focus on employer enrollment support and benefits education. Their representatives work with employees one-on-one to ensure the right fit.</div>
+        <ul class="carrier-products colonial">
+          <li><span class="cp-dot"></span>Accident and disability insurance</li>
+          <li><span class="cp-dot"></span>Cancer, critical illness &amp; heart/stroke</li>
+          <li><span class="cp-dot"></span>Hospital confinement indemnity</li>
+          <li><span class="cp-dot"></span>Term and whole life insurance</li>
+          <li><span class="cp-dot"></span>Dental &amp; vision plans</li>
+        </ul>
+        <button class="carrier-cta" onclick="openModal()">Enroll Your Team with Colonial Life →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="inner">
+    <div class="how-grid">
+      <div>
+        <div class="tag">Our Process</div>
+        <h2 class="heading">From zero to enrolled in under two weeks.</h2>
+        <p class="sub">We handle everything — from carrier selection to employee enrollment meetings to ongoing claims support. Your only job is to say yes.</p>
+        <div class="step-list">
+          <div class="step">
+            <div class="step-n">1</div>
+            <div>
+              <h4>Discovery call with you</h4>
+              <p>We learn about your workforce — size, demographics, current benefits — and recommend the right products and carriers for your employees' needs.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">2</div>
+            <div>
+              <h4>Enrollment design &amp; scheduling</h4>
+              <p>We plan the enrollment — in-person sessions, virtual meetings, or self-service — and prepare all employee-facing materials in plain English.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">3</div>
+            <div>
+              <h4>Employee benefit meetings</h4>
+              <p>We meet with your employees (individually or in groups) to explain each product, answer questions, and help them enroll in what makes sense for their lives.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">4</div>
+            <div>
+              <h4>Ongoing broker support</h4>
+              <p>As your Broker of Record, we assist with claims questions, coverage changes, new hire enrollments, and annual re-enrollment — at no additional cost.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="employer-benefits">
+          <div class="eb-title">What's in it for your business</div>
+          <div class="eb-grid">
+            <div class="eb-item">
+              <div class="eb-icon"><svg viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8v2m0 12v2"/></svg></div>
+              <div class="eb-label">Zero employer cost</div>
+              <div class="eb-desc">All premiums are employee-funded. Offer more benefits without touching your payroll budget.</div>
+            </div>
+            <div class="eb-item">
+              <div class="eb-icon"><svg viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+              <div class="eb-label">Better talent attraction</div>
+              <div class="eb-desc">A stronger benefits package wins offers even against higher-paying competitors.</div>
+            </div>
+            <div class="eb-item">
+              <div class="eb-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+              <div class="eb-label">Reduced employee turnover</div>
+              <div class="eb-desc">Employees with comprehensive benefits are significantly more likely to stay.</div>
+            </div>
+            <div class="eb-item">
+              <div class="eb-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+              <div class="eb-label">We handle admin</div>
+              <div class="eb-desc">Enrollment, changes, claims support — we manage it all so your HR team doesn't have to.</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:20px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);padding:24px;">
+          <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:8px;">Great for home care &amp; healthcare employers</div>
+          <p style="font-size:13px;color:var(--slate);line-height:1.6;margin-bottom:16px;">With competitive hiring environments and hourly workforces, voluntary benefits are one of the most cost-effective ways to differentiate your job offers without raising wages.</p>
+          <button onclick="openModal()" style="width:100%;background:var(--purple);color:var(--white);border:none;border-radius:8px;padding:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;">Schedule a Free Benefits Review →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="inner">
+    <div class="tag">Common Questions</div>
+    <h2 class="heading">Everything employers ask about voluntary benefits</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">If employees pay for it, why do I need a broker?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Because implementation matters. A broker handles carrier contracting, plan design, enrollment logistics, employee communications, and ongoing administration — all of which take significant time and expertise. Without a broker, you'd be managing carrier relationships, enrollment paperwork, and employee questions directly. We do all of that for you at no cost to your business.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do employees have to enroll? Can participation be low?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Enrollment is always voluntary — employees choose whether to participate. Carriers typically require a minimum participation threshold (usually 3–10 enrolled employees) to set up a group plan. Our experience with employee benefit presentations consistently results in strong participation rates because we explain the value clearly and make enrollment easy.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How do payroll deductions work?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Once employees enroll, their elected premium amounts are deducted from each paycheck by your payroll provider and remitted to the carrier. The process is nearly identical to how health insurance premiums are deducted today. Most payroll platforms handle this natively with a simple setup change. We provide the instructions your payroll team needs.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can employees get coverage if they have pre-existing conditions?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">During initial enrollment periods, many voluntary benefit products are offered on a guaranteed-issue basis — meaning employees can enroll without medical underwriting. This is one of the significant advantages of workplace group enrollment versus individual market coverage, where pre-existing conditions can affect eligibility or pricing.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can we add voluntary benefits to our existing benefits package?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Absolutely — in fact, that's the most common scenario. Voluntary benefits layer on top of whatever you already offer. They don't replace or affect your existing health, dental, or PFL coverage. We design them to complement your current package and fill gaps that your employees are already paying for out of pocket anyway.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band" id="quote">
+  <h2>Ready to offer more without spending more?</h2>
+  <p>Let's design a voluntary benefits package your employees will actually value — and thank you for.</p>
+  <div class="cta-btns">
+    <button class="btn-cta-white" onclick="openModal()">Schedule a Free Benefits Review →</button>
+    <a href="index.html" class="btn-cta-outline">← Back to All Services</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div style="width:36px;height:36px;background:rgba(255,255,255,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#c9a24a" d="M12 2L3 7v6c0 5.25 3.75 10.15 9 11.4C17.25 23.15 21 18.25 21 13V7l-9-5z"/></svg>
+          </div>
+          <span class="footer-brand-name">Guidance Plus LLC</span>
+        </div>
+        <p>Licensed employee benefits broker serving New York employers of all sizes.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="pfl-dbl.html">PFL &amp; Disability (DBL)</a>
+          <a href="section-125.html">Section 125 / Cafeteria Plans</a>
+          <a href="voluntary-benefits.html">Voluntary Benefits</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:info@guidanceplusllc.com">info@guidanceplusllc.com</a>
+          <a href="tel:+15165550100">(516) 555-0100</a>
+          <a href="#">Hicksville, NY</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Guidance Plus LLC. All rights reserved.</span>
+      <span>Licensed Insurance Broker — State of New York</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <div id="formContent">
+      <h2>Schedule a Free Benefits Review</h2>
+      <p>Tell us about your business and we'll reach out within one business day to set up a consultation.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="Jane" /></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith" /></div>
+      </div>
+      <div class="fg"><label>Business Name</label><input type="text" placeholder="Your Business LLC" /></div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="jane@yourbusiness.com" /></div>
+      <div class="fg"><label>Phone</label><input type="tel" placeholder="(516) 555-0100" /></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="fg"><label>Number of Employees</label>
+          <select><option>1–10</option><option>11–25</option><option>26–50</option><option>51–100</option><option>100+</option></select>
+        </div>
+        <div class="fg"><label>Carrier Preference</label>
+          <select><option>No preference</option><option>Aflac</option><option>Colonial Life</option><option>Show me both</option></select>
+        </div>
+      </div>
+      <button class="modal-sub" onclick="submitModal()">Request My Benefits Review →</button>
+    </div>
+    <div class="success-state" id="successState">
+      <svg width="52" height="52" viewBox="0 0 52 52"><circle cx="26" cy="26" r="25" fill="#534ab7"/><path d="M14 26l9 9 15-15" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      <h3>Review Request Received!</h3>
+      <p>We'll be in touch within one business day to schedule your voluntary benefits consultation.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal() { document.getElementById('modal').classList.add('open'); }
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+function submitModal() {
+  document.getElementById('formContent').style.display = 'none';
+  document.getElementById('successState').style.display = 'block';
+}
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!open) item.classList.add('open');
+}
+</script>
+</body>
+</html>

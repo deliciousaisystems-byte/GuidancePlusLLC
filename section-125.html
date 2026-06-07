@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Section 125 Cafeteria Plans — Guidance Plus LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0d2240; --navy-mid: #1a3560; --navy-light: #2a4f8a;
+  --gold: #c9a24a; --gold-light: #e8c97a; --gold-pale: #fdf6e3; --gold-border: #f0d98a;
+  --slate: #4a5568; --slate-light: #718096;
+  --bg: #f8f9fc; --white: #fff; --border: #e2e8f0; --text: #1a202c;
+  --radius: 12px; --radius-lg: 20px;
+  --shadow: 0 4px 24px rgba(13,34,64,0.08); --shadow-lg: 0 16px 56px rgba(13,34,64,0.15);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-mark { width: 36px; height: 36px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.nav-mark svg { width: 20px; height: 20px; fill: var(--gold); }
+.nav-name { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--navy); }
+.nav-sub { font-size: 10px; color: var(--slate-light); letter-spacing: 0.08em; text-transform: uppercase; }
+.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-right a { text-decoration: none; color: var(--slate); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+.nav-right a:hover, .nav-right a.active { color: #8a6d1a; }
+.nav-cta { background: var(--navy); color: var(--white) !important; padding: 10px 20px; border-radius: 8px; }
+.nav-cta:hover { background: var(--navy-mid) !important; color: var(--white) !important; }
+.breadcrumb { background: var(--gold-pale); border-bottom: 1px solid var(--gold-border); padding: 10px 2rem; font-size: 13px; color: #8a6d1a; }
+.breadcrumb a { color: #8a6d1a; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* HERO */
+.hero { background: var(--navy); padding: 80px 2rem 64px; position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 10%, rgba(201,162,74,0.14) 0%, transparent 55%); }
+.hero::after { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 10% 100%, rgba(42,79,138,0.3) 0%, transparent 50%); }
+.hero-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 400px; gap: 60px; align-items: center; position: relative; z-index: 1; }
+@media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; } }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,162,74,0.15); border: 1px solid rgba(201,162,74,0.35); color: var(--gold-light); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 24px; }
+.hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(34px, 4.5vw, 52px); color: var(--white); line-height: 1.1; margin-bottom: 18px; }
+.hero h1 em { font-style: italic; color: var(--gold-light); }
+.hero-lead { font-size: 17px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 32px; max-width: 480px; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-gold { background: var(--gold); color: var(--navy); padding: 14px 28px; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; font-family:'DM Sans',sans-serif; }
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-ghost { background: rgba(255,255,255,0.1); color: var(--white); padding: 14px 28px; border-radius: 10px; font-weight: 500; font-size: 15px; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); transition: background 0.2s; display: inline-flex; align-items: center; gap: 8px; cursor:pointer; font-family:'DM Sans',sans-serif; }
+.btn-ghost:hover { background: rgba(255,255,255,0.18); }
+
+/* SAVINGS CALCULATOR CARD */
+.calc-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-lg); padding: 28px; }
+.calc-title { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.calc-row { margin-bottom: 16px; }
+.calc-label { font-size: 12px; color: rgba(255,255,255,0.55); margin-bottom: 6px; display: flex; justify-content: space-between; }
+.calc-label span { color: var(--gold-light); font-weight: 600; font-size: 13px; }
+.calc-slider { width: 100%; -webkit-appearance: none; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.2); outline: none; }
+.calc-slider::-webkit-slider-thumb { -webkit-appearance:none; width:18px; height:18px; border-radius:50%; background:var(--gold); cursor:pointer; }
+.calc-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 18px 0; }
+.savings-display { background: rgba(201,162,74,0.12); border: 1px solid rgba(201,162,74,0.3); border-radius: 10px; padding: 16px 18px; }
+.savings-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.savings-num { font-family: 'DM Serif Display',serif; font-size: 32px; color: var(--gold-light); }
+.savings-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 3px; }
+
+/* COMMON */
+section { padding: 72px 2rem; }
+.inner { max-width: 1120px; margin: 0 auto; }
+.tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8a6d1a; margin-bottom: 12px; }
+.heading { font-family: 'DM Serif Display', serif; font-size: clamp(26px, 3.2vw, 38px); color: var(--navy); line-height: 1.15; margin-bottom: 14px; }
+.sub { font-size: 16px; color: var(--slate); max-width: 540px; line-height: 1.7; }
+@media (max-width: 768px) { .nav-right > a:not(.nav-cta) { display: none; } }
+
+/* HOW IT WORKS */
+.how { background: var(--white); }
+.how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+@media (max-width: 768px) { .how-grid { grid-template-columns: 1fr; } }
+.step-list { display: flex; flex-direction: column; gap: 0; margin-top: 36px; }
+.step { display: flex; gap: 18px; padding-bottom: 28px; position: relative; }
+.step:not(:last-child)::before { content:''; position:absolute; left:18px; top:38px; bottom:0; width:2px; background:var(--border); }
+.step-n { flex-shrink:0; width:38px; height:38px; border-radius:50%; background:var(--gold); color:var(--navy); font-family:'DM Serif Display',serif; font-size:17px; display:flex; align-items:center; justify-content:center; z-index:1; }
+.step h4 { font-size:15px; font-weight:600; color:var(--navy); margin-bottom:4px; margin-top:6px; }
+.step p { font-size:13px; color:var(--slate); line-height:1.6; }
+.who-qualifies { background: var(--bg); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 28px; margin-top: 28px; }
+.wq-title { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:14px; }
+.wq-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.wq-list li { display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--slate); }
+.wq-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:5px; }
+
+/* PLAN COMPONENTS */
+.plans { background: var(--bg); }
+.plans-header { margin-bottom:48px; }
+.plans-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+.plan-card { background:var(--white); border-radius:var(--radius-lg); border:1.5px solid var(--border); padding:24px; }
+.plan-icon { width:44px; height:44px; border-radius:12px; background:var(--gold-pale); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+.plan-icon svg { width:22px; height:22px; fill:var(--navy); }
+.plan-card h3 { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:7px; }
+.plan-card p { font-size:13px; color:var(--slate); line-height:1.6; margin-bottom:14px; }
+.plan-tag { display:inline-block; background:var(--gold-pale); color:#7a5c10; font-size:11px; font-weight:600; padding:3px 10px; border-radius:100px; border:1px solid var(--gold-border); }
+
+/* SAVINGS TABLE */
+.savings-section { background: var(--white); }
+.savings-visual { background: var(--navy); border-radius: var(--radius-lg); padding: 36px; margin-top: 48px; }
+.sv-title { font-family:'DM Serif Display',serif; font-size:22px; color:var(--white); margin-bottom:6px; }
+.sv-sub { font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:28px; }
+.sv-table { width:100%; border-collapse:collapse; }
+.sv-table th { font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.4); padding:0 16px 12px; text-align:left; }
+.sv-table th:not(:first-child) { text-align:right; }
+.sv-table td { padding:14px 16px; font-size:14px; border-top:1px solid rgba(255,255,255,0.08); }
+.sv-table td:first-child { color:rgba(255,255,255,0.75); }
+.sv-table td:not(:first-child) { text-align:right; font-weight:600; color:var(--white); }
+.sv-table .highlight td { background:rgba(201,162,74,0.12); }
+.sv-table .highlight td:last-child { color:var(--gold-light); }
+.sv-total { background:rgba(201,162,74,0.15); border-radius:10px; padding:16px 20px; margin-top:16px; display:flex; justify-content:space-between; align-items:center; }
+.sv-total-label { font-size:13px; color:rgba(255,255,255,0.6); }
+.sv-total-val { font-family:'DM Serif Display',serif; font-size:28px; color:var(--gold-light); }
+.sv-disclaimer { font-size:11px; color:rgba(255,255,255,0.3); margin-top:14px; }
+
+/* FAQ */
+.faq { background: var(--bg); }
+.faq-list { max-width:760px; display:flex; flex-direction:column; gap:10px; margin-top:40px; }
+.faq-item { border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:var(--white); }
+.faq-q { width:100%; background:none; border:none; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:var(--navy); cursor:pointer; text-align:left; transition:background 0.15s; }
+.faq-q:hover { background:var(--gold-pale); }
+.faq-chevron { width:18px; height:18px; flex-shrink:0; transition:transform 0.25s; }
+.faq-chevron path { stroke:var(--slate); stroke-width:2; fill:none; }
+.faq-a { max-height:0; overflow:hidden; transition:max-height 0.3s ease; font-size:14px; color:var(--slate); line-height:1.7; }
+.faq-a-inner { padding:0 22px 18px; }
+.faq-item.open .faq-a { max-height:220px; }
+.faq-item.open .faq-chevron { transform:rotate(180deg); }
+
+/* CTA */
+.cta-band { background:var(--navy); padding:64px 2rem; text-align:center; }
+.cta-band h2 { font-family:'DM Serif Display',serif; font-size:clamp(24px,3vw,36px); color:var(--white); margin-bottom:12px; }
+.cta-band p { font-size:16px; color:rgba(255,255,255,0.65); margin-bottom:32px; }
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+.btn-navy { background:var(--gold); color:var(--navy); padding:15px 32px; border-radius:10px; font-weight:600; font-size:15px; text-decoration:none; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; transition:background 0.2s; display:inline-flex; align-items:center; gap:8px; }
+.btn-navy:hover { background:var(--gold-light); }
+.btn-outline { background:transparent; color:var(--white); padding:15px 32px; border-radius:10px; font-weight:600; font-size:15px; text-decoration:none; border:1.5px solid rgba(255,255,255,0.35); transition:all 0.2s; display:inline-flex; align-items:center; gap:8px; }
+.btn-outline:hover { background:rgba(255,255,255,0.1); }
+
+footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 48px 2rem 28px; border-top: 1px solid rgba(255,255,255,0.1); }
+.footer-inner { max-width: 1120px; margin: 0 auto; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); gap: 40px; flex-wrap: wrap; }
+.footer-brand-name { font-family: 'DM Serif Display',serif; font-size: 18px; color: var(--white); }
+.footer-brand p { font-size: 13px; margin-top: 10px; max-width: 260px; }
+.footer-cols { display: flex; gap: 48px; flex-wrap: wrap; }
+.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 8px; transition: color 0.15s; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { display: flex; justify-content: space-between; padding-top: 22px; flex-wrap: wrap; gap: 10px; font-size: 12px; }
+
+.modal-overlay { display:none; position:fixed; inset:0; z-index:200; background:rgba(0,0,0,0.55); align-items:center; justify-content:center; padding:2rem; }
+.modal-overlay.open { display:flex; }
+.modal { background:var(--white); border-radius:var(--radius-lg); padding:40px; max-width:480px; width:100%; position:relative; box-shadow:var(--shadow-lg); animation:mIn 0.22s ease; }
+@keyframes mIn { from{opacity:0;transform:scale(0.95);}to{opacity:1;transform:none;} }
+.modal-x { position:absolute; top:14px; right:14px; background:none; border:none; cursor:pointer; font-size:18px; color:var(--slate); width:32px; height:32px; border-radius:6px; }
+.modal-x:hover { background:var(--bg); }
+.modal h2 { font-family:'DM Serif Display',serif; font-size:24px; color:var(--navy); margin-bottom:6px; }
+.modal p { font-size:14px; color:var(--slate); margin-bottom:22px; }
+.fg { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+.fg label { font-size:13px; font-weight:600; color:var(--navy); }
+.fg input, .fg select { padding:11px 14px; border:1.5px solid var(--border); border-radius:8px; font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text); outline:none; transition:border-color 0.2s; }
+.fg input:focus, .fg select:focus { border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,162,74,0.15); }
+.modal-sub { width:100%; background:var(--navy); color:var(--white); padding:14px; border:none; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; cursor:pointer; }
+.modal-sub:hover { background:var(--navy-mid); }
+.success-state { display:none; text-align:center; padding:20px 0; }
+.success-state h3 { font-family:'DM Serif Display',serif; font-size:22px; color:var(--navy); margin:16px 0 8px; }
+.success-state p { font-size:14px; color:var(--slate); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-mark"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.25 3.75 10.15 9 11.4C17.25 23.15 21 18.25 21 13V7l-9-5z"/></svg></div>
+    <div><div class="nav-name">Guidance Plus</div><div class="nav-sub">LLC — Employee Benefits</div></div>
+  </a>
+  <div class="nav-right">
+    <a href="pfl-dbl.html">PFL &amp; DBL</a>
+    <a href="section-125.html" class="active">Section 125</a>
+    <a href="voluntary-benefits.html">Voluntary Benefits</a>
+    <a href="#quote" class="nav-cta">Get a Free Quote</a>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="index.html">Home</a> &nbsp;›&nbsp; Section 125 / Cafeteria Plans</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">IRS-Approved Tax Savings</div>
+      <h1>Section 125<br/><em>Cafeteria Plans</em></h1>
+      <p class="hero-lead">Reduce your payroll tax burden and give employees more take-home pay — with zero disruption to your current benefits. Most employers save hundreds of dollars per employee per year.</p>
+      <div class="hero-actions">
+        <button class="btn-gold" onclick="openModal()">See My Savings Estimate →</button>
+        <a href="#how" class="btn-ghost">How It Works ↓</a>
+      </div>
+    </div>
+
+    <!-- LIVE SAVINGS CALCULATOR -->
+    <div class="calc-card">
+      <div class="calc-title">Instant Savings Estimator</div>
+      <div class="calc-row">
+        <div class="calc-label">Employees enrolled <span id="empVal">25</span></div>
+        <input class="calc-slider" type="range" min="5" max="200" value="25" step="1" oninput="calcSavings()" id="empSlider" />
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">Avg monthly premium <span id="premVal">$400</span></div>
+        <input class="calc-slider" type="range" min="100" max="1200" value="400" step="25" oninput="calcSavings()" id="premSlider" />
+      </div>
+      <div class="calc-divider"></div>
+      <div class="savings-display">
+        <div class="savings-label">Estimated Annual Employer Savings</div>
+        <div class="savings-num" id="savingsNum">$4,590</div>
+        <div class="savings-sub">in FICA / payroll tax reduction</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="inner">
+    <div class="how-grid">
+      <div>
+        <div class="tag">How It Works</div>
+        <h2 class="heading">Pre-tax benefits that save everyone money.</h2>
+        <p class="sub">A Section 125 plan lets employees pay for eligible benefits using pre-tax dollars — reducing their taxable income and your payroll tax liability simultaneously.</p>
+        <div class="step-list">
+          <div class="step">
+            <div class="step-n">1</div>
+            <div>
+              <h4>We set up an IRS-compliant plan document</h4>
+              <p>We create the required legal plan document and ensure your cafeteria plan meets all IRS Section 125 requirements. No plan document = no tax savings, and potential IRS penalties.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">2</div>
+            <div>
+              <h4>Employees elect their benefits pre-tax</h4>
+              <p>During open enrollment, employees choose which benefits they want to pay for on a pre-tax basis — health premiums, FSA contributions, dependent care, and more.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">3</div>
+            <div>
+              <h4>Payroll deductions are taken pre-tax</h4>
+              <p>Those deductions come out before federal income tax, Social Security (FICA), and Medicare — reducing the taxable wage base for both you and your employees.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">4</div>
+            <div>
+              <h4>Both sides save — every single paycheck</h4>
+              <p>Employers save 7.65% FICA on every pre-tax dollar. Employees save federal income tax plus FICA on their contributions. The savings add up fast.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="who-qualifies">
+          <div class="wq-title">What qualifies under Section 125?</div>
+          <ul class="wq-list">
+            <li><span class="wq-dot"></span>Employer-sponsored health insurance premiums</li>
+            <li><span class="wq-dot"></span>Dental and vision insurance premiums</li>
+            <li><span class="wq-dot"></span>Health Flexible Spending Accounts (FSA)</li>
+            <li><span class="wq-dot"></span>Dependent Care Spending Accounts (DCA)</li>
+            <li><span class="wq-dot"></span>Accident and critical illness premiums</li>
+            <li><span class="wq-dot"></span>Hospital indemnity insurance premiums</li>
+            <li><span class="wq-dot"></span>Group term life insurance (up to $50,000)</li>
+            <li><span class="wq-dot"></span>Disability insurance premiums (in some cases)</li>
+          </ul>
+        </div>
+        <div style="background:var(--gold-pale);border:1px solid var(--gold-border);border-radius:var(--radius-lg);padding:24px;margin-top:20px;">
+          <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;">Already offering benefits?</div>
+          <p style="font-size:13px;color:var(--slate);margin-bottom:16px;line-height:1.6;">If your employees are currently paying their share of health premiums on an after-tax basis, you're leaving money on the table — for them and for you. Adding a Section 125 wrapper to your existing plan is often surprisingly straightforward.</p>
+          <button onclick="openModal()" style="background:var(--navy);color:var(--white);border:none;border-radius:8px;padding:11px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;width:100%;">Check Your Eligibility Free →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN COMPONENTS -->
+<section class="plans">
+  <div class="inner">
+    <div class="plans-header">
+      <div class="tag">Plan Options</div>
+      <h2 class="heading">What we can include in your cafeteria plan</h2>
+      <p class="sub">A cafeteria plan can be as simple or comprehensive as your workforce needs. We design it around your existing benefits.</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-icon"><svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+        <h3>Premium Only Plan (POP)</h3>
+        <p>The simplest cafeteria plan — lets employees pay their share of health, dental, and vision premiums with pre-tax dollars. Low cost, easy to administer, big tax impact.</p>
+        <span class="plan-tag">Most Common Starting Point</span>
+      </div>
+      <div class="plan-card">
+        <div class="plan-icon"><svg viewBox="0 0 24 24"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div>
+        <h3>Flexible Spending Account (FSA)</h3>
+        <p>Employees set aside pre-tax money for qualified medical expenses — copays, prescriptions, glasses, and more. The employer can also contribute to boost the benefit.</p>
+        <span class="plan-tag">Saves on out-of-pocket costs</span>
+      </div>
+      <div class="plan-card">
+        <div class="plan-icon"><svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div>
+        <h3>Dependent Care Account (DCA)</h3>
+        <p>Pre-tax dollars for eligible dependent care expenses — daycare, after-school programs, elder care. Up to $5,000/year per household tax-free.</p>
+        <span class="plan-tag">Big savings for working parents</span>
+      </div>
+      <div class="plan-card">
+        <div class="plan-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+        <h3>Full Cafeteria / Full-Flex Plan</h3>
+        <p>The most comprehensive option — combines POP, FSA, and DCA with a menu of voluntary benefits all paid pre-tax. Ideal for employers with 25+ employees.</p>
+        <span class="plan-tag">Maximum tax advantage</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAVINGS TABLE -->
+<section class="savings-section">
+  <div class="inner">
+    <div class="tag">The Numbers</div>
+    <h2 class="heading">See what Section 125 actually saves</h2>
+    <p class="sub">Based on a sample employer with 20 employees each paying $450/month in health premiums.</p>
+    <div class="savings-visual">
+      <div class="sv-title">Annual Tax Savings Breakdown</div>
+      <div class="sv-sub">Sample: 20 employees, $450/mo premium, $5,400/yr each</div>
+      <table class="sv-table">
+        <thead><tr><th>Category</th><th>Without Plan</th><th>With Section 125</th><th>Annual Savings</th></tr></thead>
+        <tbody>
+          <tr><td>Employee FICA contribution</td><td>$8,262</td><td>$0</td><td>$8,262</td></tr>
+          <tr><td>Employer FICA (7.65% × payroll)</td><td>$16,524</td><td>$8,262</td><td>$8,262</td></tr>
+          <tr class="highlight"><td>Total combined savings</td><td>—</td><td>—</td><td>$16,524</td></tr>
+        </tbody>
+      </table>
+      <div class="sv-total">
+        <div class="sv-total-label">Employer's annual FICA savings alone</div>
+        <div class="sv-total-val">$8,262</div>
+      </div>
+      <div class="sv-disclaimer">* Figures are illustrative estimates. Actual savings depend on employee participation, wages, and benefit elections. We'll run exact numbers for your business.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="inner">
+    <div class="tag">Common Questions</div>
+    <h2 class="heading">Section 125 — what you need to know</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I need a plan document?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — this is an IRS requirement many employers miss. Without a written plan document, your cafeteria plan is not valid under Section 125, and all pre-tax deductions could be reclassified as taxable income in an audit. We prepare and maintain IRS-compliant plan documents as part of our service.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I offer a Section 125 plan if I don't provide health insurance?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Even if your company does not sponsor a group health plan, you can still establish a Section 125 plan to allow employees to pay for voluntary benefits, FSA contributions, or individual health coverage on a pre-tax basis. We'll help you build the right structure for your situation.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How does this affect my payroll processing?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Once your plan is in place, your payroll provider simply adjusts the deduction codes to reflect pre-tax status. Most major payroll platforms (ADP, Paychex, Gusto, QuickBooks Payroll) support this natively. We'll provide the documentation your payroll team needs to make the switch cleanly.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Are there any risks or downsides?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">The main consideration is that employees make an annual election that generally cannot be changed mid-year unless they have a qualifying life event. FSA funds are also use-it-or-lose-it at year-end (with some grace period options). We explain all of this clearly to employees during enrollment so they make informed decisions.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How quickly can we get a plan in place?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">A basic Premium Only Plan (POP) can typically be implemented within 1–2 weeks. A full cafeteria plan with FSA and DCA components may take 3–4 weeks depending on your open enrollment timing. We recommend starting the process 4–6 weeks before your plan year or renewal date.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band" id="quote">
+  <h2>Find out exactly how much you could save.</h2>
+  <p>We'll run a custom analysis for your business — for free. No obligation, no pressure.</p>
+  <div class="cta-btns">
+    <button class="btn-navy" onclick="openModal()">Get My Savings Analysis →</button>
+    <a href="index.html" class="btn-outline">← Back to All Services</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div style="width:36px;height:36px;background:rgba(255,255,255,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#c9a24a" d="M12 2L3 7v6c0 5.25 3.75 10.15 9 11.4C17.25 23.15 21 18.25 21 13V7l-9-5z"/></svg>
+          </div>
+          <span class="footer-brand-name">Guidance Plus LLC</span>
+        </div>
+        <p>Licensed employee benefits broker serving New York employers of all sizes.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="pfl-dbl.html">PFL &amp; Disability (DBL)</a>
+          <a href="section-125.html">Section 125 / Cafeteria Plans</a>
+          <a href="voluntary-benefits.html">Voluntary Benefits</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:info@guidanceplusllc.com">info@guidanceplusllc.com</a>
+          <a href="tel:+15165550100">(516) 555-0100</a>
+          <a href="#">Hicksville, NY</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Guidance Plus LLC. All rights reserved.</span>
+      <span>Licensed Insurance Broker — State of New York</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <div id="formContent">
+      <h2>Get Your Section 125 Savings Analysis</h2>
+      <p>We'll calculate your exact FICA savings and send you a personalized report within 24 hours — free.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="Jane" /></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith" /></div>
+      </div>
+      <div class="fg"><label>Business Name</label><input type="text" placeholder="Your Business LLC" /></div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="jane@yourbusiness.com" /></div>
+      <div class="fg"><label>Phone</label><input type="tel" placeholder="(516) 555-0100" /></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="fg"><label>Number of Employees</label>
+          <select><option>1–10</option><option>11–25</option><option>26–50</option><option>51–100</option><option>100+</option></select>
+        </div>
+        <div class="fg"><label>Do you offer health insurance?</label>
+          <select><option>Yes</option><option>No</option><option>Not sure</option></select>
+        </div>
+      </div>
+      <button class="modal-sub" onclick="submitModal()">Send My Savings Analysis →</button>
+    </div>
+    <div class="success-state" id="successState">
+      <svg width="52" height="52" viewBox="0 0 52 52"><circle cx="26" cy="26" r="25" fill="#0d2240"/><path d="M14 26l9 9 15-15" stroke="#c9a24a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      <h3>Analysis Request Received!</h3>
+      <p>We'll build your personalized Section 125 savings report and send it within one business day.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function calcSavings() {
+  const emp = parseInt(document.getElementById('empSlider').value);
+  const prem = parseInt(document.getElementById('premSlider').value);
+  document.getElementById('empVal').textContent = emp;
+  document.getElementById('premVal').textContent = '$' + prem.toLocaleString();
+  const annual = emp * prem * 12;
+  const savings = Math.round(annual * 0.0765);
+  document.getElementById('savingsNum').textContent = '$' + savings.toLocaleString();
+}
+function openModal() { document.getElementById('modal').classList.add('open'); }
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+function submitModal() {
+  document.getElementById('formContent').style.display = 'none';
+  document.getElementById('successState').style.display = 'block';
+}
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!open) item.classList.add('open');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Guidance Plus LLC — Employee Benefits Brokerage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0d2240; --navy-mid: #1a3560; --navy-light: #2a4f8a;
+  --gold: #c9a24a; --gold-light: #e8c97a; --gold-pale: #fdf6e3;
+  --slate: #4a5568; --slate-light: #718096;
+  --bg: #f8f9fc; --white: #fff; --border: #e2e8f0; --text: #1a202c;
+  --radius: 12px; --radius-lg: 20px;
+  --shadow: 0 4px 24px rgba(13,34,64,0.08);
+  --shadow-lg: 0 16px 56px rgba(13,34,64,0.16);
+  --c1: #0f6e56; --c1l: #e1f5ee; --c1a: #1d9e75;
+  --c2: #1a3560; --c2l: #e8eef8; --c2a: #2a4f8a;
+  --c3: #7a3b8f; --c3l: #f3e8fa; --c3a: #9b52b5;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+/* NAV */
+nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-mark { width: 36px; height: 36px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.nav-logo-mark svg { width: 20px; height: 20px; fill: var(--gold); }
+.nav-name { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--navy); }
+.nav-sub { font-size: 10px; color: var(--slate-light); font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; }
+.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-right a { text-decoration: none; color: var(--slate); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+.nav-right a:hover { color: var(--navy); }
+.nav-cta { background: var(--navy); color: var(--white) !important; padding: 10px 20px; border-radius: 8px; }
+.nav-cta:hover { background: var(--navy-mid) !important; }
+
+/* HERO */
+.hero { background: var(--navy); padding: 96px 2rem 72px; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 65% 0%, rgba(201,162,74,0.13) 0%, transparent 55%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 100%, rgba(42,79,138,0.3) 0%, transparent 50%); pointer-events: none; }
+.hero-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,162,74,0.15); border: 1px solid rgba(201,162,74,0.35); color: var(--gold-light); padding: 6px 16px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 28px; }
+.hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(38px, 5.5vw, 62px); color: var(--white); line-height: 1.08; margin-bottom: 20px; }
+.hero h1 em { font-style: italic; color: var(--gold-light); }
+.hero p { font-size: 18px; color: rgba(255,255,255,0.68); max-width: 580px; margin: 0 auto 40px; line-height: 1.7; }
+.btn-gold { background: var(--gold); color: var(--navy); padding: 15px 32px; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; }
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-ghost { background: rgba(255,255,255,0.1); color: var(--white); padding: 15px 32px; border-radius: 10px; font-weight: 500; font-size: 15px; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); transition: background 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-ghost:hover { background: rgba(255,255,255,0.18); }
+.hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.trust-strip { display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 60px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.55); font-size: 13px; }
+.trust-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center; }
+.trust-icon svg { width: 16px; height: 16px; fill: var(--gold); }
+
+/* SERVICES SECTION */
+.services { padding: 88px 2rem; }
+.services-inner { max-width: 1120px; margin: 0 auto; }
+.section-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.section-heading { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3.5vw, 40px); color: var(--navy); line-height: 1.15; margin-bottom: 14px; }
+.section-sub { font-size: 16px; color: var(--slate); max-width: 560px; line-height: 1.7; }
+.services-header { text-align: center; margin-bottom: 60px; }
+.services-header .section-sub { margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+@media (max-width: 900px) { .services-grid { grid-template-columns: 1fr; } .nav-right > a:not(.nav-cta) { display: none; } }
+
+/* SERVICE CARDS */
+.svc-card { background: var(--white); border-radius: var(--radius-lg); border: 1.5px solid var(--border); overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.25s, transform 0.2s; text-decoration: none; color: inherit; }
+.svc-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px); }
+.svc-card-header { padding: 36px 32px 28px; position: relative; }
+.svc-card-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--border); }
+.svc-icon-wrap { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
+.svc-icon-wrap svg { width: 28px; height: 28px; }
+.svc-card h2 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--navy); margin-bottom: 10px; line-height: 1.2; }
+.svc-card .svc-desc { font-size: 14px; color: var(--slate); line-height: 1.65; }
+.svc-card-body { padding: 24px 32px 32px; flex: 1; display: flex; flex-direction: column; }
+.svc-highlights { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 28px; flex: 1; }
+.svc-highlights li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--slate); line-height: 1.5; }
+.svc-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.svc-link { display: flex; align-items: center; justify-content: space-between; padding: 13px 18px; border-radius: 10px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; border: 1.5px solid; }
+.svc-link svg { width: 18px; height: 18px; flex-shrink: 0; transition: transform 0.2s; }
+.svc-card:hover .svc-link svg { transform: translateX(4px); }
+
+/* Card 1 — PFL/DBL — teal */
+.card-pfl .svc-icon-wrap { background: #e1f5ee; }
+.card-pfl .svc-icon-wrap svg { fill: #0f6e56; }
+.card-pfl .svc-dot { background: #1d9e75; }
+.card-pfl .svc-link { background: #e1f5ee; color: #0f6e56; border-color: #9fe1cb; }
+.card-pfl .svc-link:hover { background: #0f6e56; color: var(--white); border-color: #0f6e56; }
+
+/* Card 2 — Section 125 — navy/gold */
+.card-125 .svc-icon-wrap { background: var(--gold-pale); }
+.card-125 .svc-icon-wrap svg { fill: var(--navy); }
+.card-125 .svc-dot { background: var(--gold); }
+.card-125 .svc-link { background: var(--gold-pale); color: var(--navy); border-color: #f0d98a; }
+.card-125 .svc-link:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+/* Card 3 — Voluntary — purple */
+.card-vol .svc-icon-wrap { background: #eeedfe; }
+.card-vol .svc-icon-wrap svg { fill: #534ab7; }
+.card-vol .svc-dot { background: #7f77dd; }
+.card-vol .svc-link { background: #eeedfe; color: #534ab7; border-color: #afa9ec; }
+.card-vol .svc-link:hover { background: #534ab7; color: var(--white); border-color: #534ab7; }
+
+/* HOW WE HELP */
+.how { background: var(--white); padding: 80px 2rem; }
+.how-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+@media (max-width: 768px) { .how-inner { grid-template-columns: 1fr; gap: 40px; } }
+.how-steps { display: flex; flex-direction: column; gap: 0; margin-top: 36px; }
+.how-step { display: flex; gap: 20px; padding: 0 0 28px; position: relative; }
+.how-step:not(:last-child)::before { content: ''; position: absolute; left: 19px; top: 40px; bottom: 0; width: 2px; background: var(--border); }
+.how-step-num { flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: var(--navy); color: var(--gold); font-family: 'DM Serif Display', serif; font-size: 18px; display: flex; align-items: center; justify-content: center; z-index: 1; }
+.how-step-body h4 { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 5px; margin-top: 8px; }
+.how-step-body p { font-size: 13px; color: var(--slate); line-height: 1.6; }
+.how-visual { background: var(--navy); border-radius: var(--radius-lg); padding: 40px 36px; color: var(--white); }
+.how-visual-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--gold-light); margin-bottom: 6px; }
+.how-visual-sub { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 28px; }
+.stat-rows { display: flex; flex-direction: column; gap: 16px; }
+.stat-row { background: rgba(255,255,255,0.06); border-radius: 10px; padding: 16px 20px; border: 1px solid rgba(255,255,255,0.1); }
+.stat-row-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+.stat-row-val { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--gold-light); }
+.stat-row-desc { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+
+/* CTA BANNER */
+.cta-banner { background: var(--gold-pale); border-top: 1px solid #f0d98a; border-bottom: 1px solid #f0d98a; padding: 64px 2rem; text-align: center; }
+.cta-banner h2 { font-family: 'DM Serif Display', serif; font-size: clamp(26px, 3vw, 36px); color: var(--navy); margin-bottom: 12px; }
+.cta-banner p { font-size: 16px; color: var(--slate); margin-bottom: 32px; }
+.cta-banner-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-navy { background: var(--navy); color: var(--white); padding: 15px 32px; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s; display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; }
+.btn-navy:hover { background: var(--navy-mid); }
+.btn-outline { background: transparent; color: var(--navy); padding: 15px 32px; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1.5px solid var(--navy); transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-outline:hover { background: var(--navy); color: var(--white); }
+
+/* FOOTER */
+footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 56px 2rem 32px; }
+.footer-inner { max-width: 1120px; margin: 0 auto; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.1); gap: 40px; flex-wrap: wrap; }
+.footer-brand-name { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--white); }
+.footer-brand p { font-size: 13px; margin-top: 10px; max-width: 260px; line-height: 1.6; }
+.footer-cols { display: flex; gap: 48px; flex-wrap: wrap; }
+.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 9px; transition: color 0.15s; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; flex-wrap: wrap; gap: 10px; }
+.footer-bottom p, .footer-lic { font-size: 12px; }
+
+/* MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.55); align-items: center; justify-content: center; padding: 2rem; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--white); border-radius: var(--radius-lg); padding: 40px; max-width: 480px; width: 100%; position: relative; box-shadow: var(--shadow-lg); animation: mIn 0.22s ease; }
+@keyframes mIn { from { opacity:0; transform:scale(0.95); } to { opacity:1; transform:none; } }
+.modal-x { position: absolute; top: 14px; right: 14px; background: none; border: none; cursor: pointer; font-size: 18px; color: var(--slate); width: 32px; height: 32px; border-radius: 6px; }
+.modal-x:hover { background: var(--bg); }
+.modal h2 { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--navy); margin-bottom: 6px; }
+.modal p { font-size: 14px; color: var(--slate); margin-bottom: 24px; }
+.fg { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.fg label { font-size: 13px; font-weight: 600; color: var(--navy); }
+.fg input, .fg select { padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'DM Sans',sans-serif; font-size: 14px; color: var(--text); outline: none; transition: border-color 0.2s; }
+.fg input:focus, .fg select:focus { border-color: var(--navy-light); box-shadow: 0 0 0 3px rgba(26,53,96,0.1); }
+.modal-submit { width: 100%; background: var(--navy); color: var(--white); padding: 14px; border: none; border-radius: 10px; font-family: 'DM Sans',sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 4px; }
+.modal-submit:hover { background: var(--navy-mid); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.25 3.75 10.15 9 11.4C17.25 23.15 21 18.25 21 13V7l-9-5z"/></svg>
+    </div>
+    <div>
+      <div class="nav-name">Guidance Plus</div>
+      <div class="nav-sub">LLC — Employee Benefits</div>
+    </div>
+  </a>
+  <div class="nav-right">
+    <a href="pfl-dbl.html">PFL & DBL</a>
+    <a href="section-125.html">Section 125</a>
+    <a href="voluntary-benefits.html">Voluntary Benefits</a>
+    <a href="#contact" class="nav-cta">Get a Free Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 7v6c0 5.25 3.75 10.15 9 11.4C17.25 23.15 21 18.25 21 13V7l-9-5z"/></svg>
+      Licensed Insurance Broker — New York
+    </div>
+    <h1>Better Benefits.<br/><em>Smarter</em> Solutions.</h1>
+    <p>We help New York employers navigate Paid Family Leave, Section 125 Cafeteria Plans, and Voluntary Benefits — saving money and protecting your people.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-gold">Explore Our Services ↓</a>
+      <a href="#contact" class="btn-ghost">Get a Free Quote →</a>
+    </div>
+    <div class="trust-strip">
+      <div class="trust-item">
+        <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+        NY Licensed & Compliant
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8v2m0 12v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2m16 0h2"/></svg></div>
+        Zero-Cost Consultation
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+        Broker of Record Service
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+        24-Hour Response
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="section-tag">Our Services</div>
+      <h2 class="section-heading">Everything your employees need, covered.</h2>
+      <p class="section-sub">Click any service below to learn more, see what's included, and request a personalized quote.</p>
+    </div>
+    <div class="services-grid">
+
+      <!-- PFL/DBL -->
+      <a href="pfl-dbl.html" class="svc-card card-pfl">
+        <div class="svc-card-header">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h2>Paid Family Leave &amp; Disability</h2>
+          <p class="svc-desc">NY-mandated coverage for your workforce — protecting employees during life's most important moments while keeping you compliant.</p>
+        </div>
+        <div class="svc-card-body">
+          <ul class="svc-highlights">
+            <li><span class="svc-dot"></span>NY Statutory Short-Term Disability (DBL)</li>
+            <li><span class="svc-dot"></span>Paid Family Leave (PFL) — up to 12 weeks</li>
+            <li><span class="svc-dot"></span>DBL + PFL combination policies</li>
+            <li><span class="svc-dot"></span>Multi-carrier comparison & rate shopping</li>
+            <li><span class="svc-dot"></span>Compliance guarantee for all NY employers</li>
+          </ul>
+          <div class="svc-link">
+            Learn About PFL &amp; DBL
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Section 125 -->
+      <a href="section-125.html" class="svc-card card-125">
+        <div class="svc-card-header">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          </div>
+          <h2>Section 125 Cafeteria Plans</h2>
+          <p class="svc-desc">Reduce payroll taxes for both you and your employees by letting workers pay for benefits with pre-tax dollars — often with zero net cost to the employer.</p>
+        </div>
+        <div class="svc-card-body">
+          <ul class="svc-highlights">
+            <li><span class="svc-dot"></span>FICA & payroll tax savings for employers</li>
+            <li><span class="svc-dot"></span>Pre-tax health, dental & vision premiums</li>
+            <li><span class="svc-dot"></span>Flexible Spending Accounts (FSA)</li>
+            <li><span class="svc-dot"></span>Dependent Care Accounts (DCA)</li>
+            <li><span class="svc-dot"></span>IRS-compliant plan documents included</li>
+          </ul>
+          <div class="svc-link">
+            Learn About Section 125
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Voluntary Benefits -->
+      <a href="voluntary-benefits.html" class="svc-card card-vol">
+        <div class="svc-card-header">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </div>
+          <h2>Voluntary Benefits</h2>
+          <p class="svc-desc">Supplement your core benefits with employee-paid coverage options from top carriers like Aflac and Colonial Life — at no direct cost to you.</p>
+        </div>
+        <div class="svc-card-body">
+          <ul class="svc-highlights">
+            <li><span class="svc-dot"></span>Accident & Critical Illness coverage</li>
+            <li><span class="svc-dot"></span>Hospital Indemnity plans</li>
+            <li><span class="svc-dot"></span>Life & Supplemental Life insurance</li>
+            <li><span class="svc-dot"></span>Aflac & Colonial Life carrier options</li>
+            <li><span class="svc-dot"></span>100% employee-funded — zero employer cost</li>
+          </ul>
+          <div class="svc-link">
+            Learn About Voluntary Benefits
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section class="how">
+  <div class="how-inner">
+    <div>
+      <div class="section-tag">Our Process</div>
+      <h2 class="section-heading">Simple, transparent, and always on your side.</h2>
+      <p class="section-sub">As an independent broker, we work for you — not for any carrier. That means unbiased advice and better outcomes.</p>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step-num">1</div>
+          <div class="how-step-body">
+            <h4>Tell us about your business</h4>
+            <p>Share basic info — headcount, industry, and what you're looking for. No sensitive data needed upfront.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">2</div>
+          <div class="how-step-body">
+            <h4>We shop and compare for you</h4>
+            <p>We go to market across multiple top-rated carriers and return a clear side-by-side comparison within 24 hours.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">3</div>
+          <div class="how-step-body">
+            <h4>We bind coverage and stay on file</h4>
+            <p>Once you choose a plan, we handle all paperwork. We remain your Broker of Record for renewals and claims year-round.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="how-visual">
+      <div class="how-visual-title">Why employers choose us</div>
+      <div class="how-visual-sub">At-a-glance</div>
+      <div class="stat-rows">
+        <div class="stat-row">
+          <div class="stat-row-label">Typical employer FICA savings</div>
+          <div class="stat-row-val">$400–$800</div>
+          <div class="stat-row-desc">per enrolled employee per year via Section 125</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-row-label">Average quote turnaround</div>
+          <div class="stat-row-val">Under 24 hrs</div>
+          <div class="stat-row-desc">from form submission to personalized comparison</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-row-label">Cost to work with us</div>
+          <div class="stat-row-val">$0</div>
+          <div class="stat-row-desc">broker commission is paid by the carrier, not you</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner" id="contact">
+  <h2>Ready to protect your team and reduce costs?</h2>
+  <p>Get a free, no-obligation consultation. We'll review your current coverage, identify gaps, and show you what's possible.</p>
+  <div class="cta-banner-actions">
+    <button class="btn-navy" onclick="openModal()">Request a Free Quote →</button>
+    <a href="mailto:info@guidanceplusllc.com" class="btn-outline">Email Us Directly</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div class="nav-logo-mark" style="background:rgba(255,255,255,0.12);">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#c9a24a" d="M12 2L3 7v6c0 5.25 3.75 10.15 9 11.4C17.25 23.15 21 18.25 21 13V7l-9-5z"/></svg>
+          </div>
+          <div class="footer-brand-name">Guidance Plus LLC</div>
+        </div>
+        <p>Licensed employee benefits broker serving New York employers of all sizes.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="pfl-dbl.html">PFL &amp; Disability (DBL)</a>
+          <a href="section-125.html">Section 125 / Cafeteria Plans</a>
+          <a href="voluntary-benefits.html">Voluntary Benefits</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#services">Our Services</a>
+          <a href="#contact">Get a Quote</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:info@guidanceplusllc.com">info@guidanceplusllc.com</a>
+          <a href="tel:+15165550100">(516) 555-0100</a>
+          <a href="#">Hicksville, NY</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Guidance Plus LLC. All rights reserved.</p>
+      <span class="footer-lic">Licensed Insurance Broker — State of New York</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <h2>Request a Free Quote</h2>
+    <p>Tell us a little about your business and we'll be in touch within one business day.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div class="fg"><label>First Name</label><input type="text" placeholder="Jane" /></div>
+      <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith" /></div>
+    </div>
+    <div class="fg"><label>Business Name</label><input type="text" placeholder="Acme LLC" /></div>
+    <div class="fg"><label>Email</label><input type="email" placeholder="jane@yourbusiness.com" /></div>
+    <div class="fg"><label>Phone</label><input type="tel" placeholder="(516) 555-0100" /></div>
+    <div class="fg">
+      <label>Service Interested In</label>
+      <select>
+        <option>PFL &amp; Disability</option>
+        <option>Section 125 / Cafeteria Plan</option>
+        <option>Voluntary Benefits</option>
+        <option>All of the above</option>
+      </select>
+    </div>
+    <button class="modal-submit" onclick="submitModal()">Submit Request →</button>
+  </div>
+</div>
+
+<script>
+function openModal() { document.getElementById('modal').classList.add('open'); }
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+function submitModal() {
+  closeModal();
+  alert("Thank you! We'll be in touch within one business day.");
+}
+</script>
+</body>
+</html>
