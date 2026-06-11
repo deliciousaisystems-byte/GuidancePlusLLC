@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Payroll Financing & Revolving Credit — Guidance Plus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0d2240; --navy-mid: #1a3560; --navy-light: #2a4f8a;
+  --gold: #c9a24a; --gold-light: #e8c97a; --gold-pale: #fdf6e3;
+  --coral: #c1501f; --coral-mid: #d85a30; --coral-pale: #faece7; --coral-border: #f3c5af;
+  --slate: #4a5568; --slate-light: #718096;
+  --bg: #f8f9fc; --white: #fff; --border: #e2e8f0; --text: #1a202c;
+  --radius: 12px; --radius-lg: 20px;
+  --shadow: 0 4px 24px rgba(13,34,64,0.08); --shadow-lg: 0 16px 56px rgba(13,34,64,0.15);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-mark { width: 36px; height: 36px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.nav-mark svg { width: 20px; height: 20px; fill: var(--gold); }
+.nav-name { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--navy); }
+.nav-sub { font-size: 10px; color: var(--slate-light); letter-spacing: 0.08em; text-transform: uppercase; }
+.nav-right { display: flex; align-items: center; gap: 1.6rem; }
+.nav-right a { text-decoration: none; color: var(--slate); font-size: 14px; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
+.nav-right a:hover, .nav-right a.active { color: var(--coral); }
+.nav-cta { background: var(--navy); color: var(--white) !important; padding: 10px 20px; border-radius: 8px; }
+.nav-cta:hover { background: var(--navy-mid) !important; color: var(--white) !important; }
+.breadcrumb { background: var(--coral-pale); border-bottom: 1px solid var(--coral-border); padding: 10px 2rem; font-size: 13px; color: var(--coral); }
+.breadcrumb a { color: var(--coral); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* HERO */
+.hero { background: var(--navy); padding: 80px 2rem 64px; position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 75% 10%, rgba(193,80,31,0.22) 0%, transparent 55%); }
+.hero::after { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 10% 100%, rgba(42,79,138,0.3) 0%, transparent 50%); }
+.hero-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: center; position: relative; z-index: 1; }
+@media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; } }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(193,80,31,0.18); border: 1px solid rgba(216,90,48,0.4); color: #f3a584; padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 24px; }
+.hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(34px, 4.5vw, 52px); color: var(--white); line-height: 1.1; margin-bottom: 18px; }
+.hero h1 em { font-style: italic; color: var(--coral-mid); }
+.hero-lead { font-size: 17px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 32px; max-width: 480px; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-coral { background: var(--coral-mid); color: var(--white); padding: 14px 28px; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; font-family:'DM Sans',sans-serif; }
+.btn-coral:hover { background: #e6713f; transform: translateY(-1px); }
+.btn-ghost { background: rgba(255,255,255,0.1); color: var(--white); padding: 14px 28px; border-radius: 10px; font-weight: 500; font-size: 15px; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); transition: background 0.2s; display: inline-flex; align-items: center; gap: 8px; cursor:pointer; font-family:'DM Sans',sans-serif; }
+.btn-ghost:hover { background: rgba(255,255,255,0.18); }
+
+/* HERO CARD - HOW IT FEELS */
+.hero-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-lg); padding: 28px; }
+.hc-title { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #f3a584; margin-bottom: 20px; }
+.hc-row { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+.hc-row:last-child { margin-bottom: 0; }
+.hc-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(216,90,48,0.25); color: #f3a584; font-family: 'DM Serif Display', serif; font-size: 15px; display: flex; align-items: center; justify-content: center; }
+.hc-label { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+.hc-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+/* COMMON */
+section { padding: 72px 2rem; }
+.inner { max-width: 1120px; margin: 0 auto; }
+.tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
+.heading { font-family: 'DM Serif Display', serif; font-size: clamp(26px, 3.2vw, 38px); color: var(--navy); line-height: 1.15; margin-bottom: 14px; }
+.sub { font-size: 16px; color: var(--slate); max-width: 540px; line-height: 1.7; }
+@media (max-width: 1000px) { .nav-right > a:not(.nav-cta) { display: none; } }
+
+/* WHY YOU NEED THIS */
+.why { background: var(--white); }
+.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 48px; }
+@media (max-width: 768px) { .why-grid { grid-template-columns: 1fr; } }
+.why-card { border-radius: var(--radius-lg); border: 1.5px solid var(--border); padding: 28px; background: var(--bg); display: flex; gap: 18px; align-items: flex-start; }
+.why-icon { flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px; background: var(--coral-pale); display: flex; align-items: center; justify-content: center; }
+.why-icon svg { width: 24px; height: 24px; fill: var(--coral); }
+.why-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.why-card p { font-size: 13px; color: var(--slate); line-height: 1.65; }
+
+/* THE SAFETY NET CONCEPT */
+.concept { background: var(--bg); }
+.concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+@media (max-width: 768px) { .concept-grid { grid-template-columns: 1fr; } }
+.concept-visual { background: var(--navy); border-radius: var(--radius-lg); padding: 36px; color: var(--white); }
+.cv-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--coral-mid); margin-bottom: 6px; }
+.cv-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 28px; }
+.cv-row { background: rgba(255,255,255,0.06); border-radius: 10px; padding: 16px 20px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+.cv-row:last-child { margin-bottom: 0; }
+.cv-label { font-size: 13px; color: rgba(255,255,255,0.65); }
+.cv-val { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--coral-mid); }
+.cv-highlight { background: rgba(216,90,48,0.15); border: 1px solid rgba(216,90,48,0.35); border-radius: 10px; padding: 16px 20px; margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.6; }
+.eligibility-box { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 24px; margin-top: 20px; }
+.eb-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+.eb-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.eb-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--slate); }
+.eb-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--coral); flex-shrink: 0; margin-top: 5px; }
+
+/* HOW IT WORKS */
+.how { background: var(--white); }
+.how-header { margin-bottom: 48px; }
+.how-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+@media (max-width: 1000px) { .how-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .how-grid { grid-template-columns: 1fr; } }
+.how-card { background: var(--bg); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 22px; }
+.how-num { width: 36px; height: 36px; border-radius: 50%; background: var(--coral); color: var(--white); font-family: 'DM Serif Display', serif; font-size: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.how-card h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.how-card .how-time { font-size: 11px; color: var(--coral); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+.how-card p { font-size: 12px; color: var(--slate); line-height: 1.6; }
+
+/* COMPARISON */
+.comparison { background: var(--bg); }
+.comp-table-wrap { margin-top: 40px; background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; }
+.comp-table { width: 100%; border-collapse: collapse; }
+.comp-table th { background: var(--navy); color: var(--white); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 16px 20px; text-align: left; }
+.comp-table th:first-child { width: 32%; }
+.comp-table th.feature-col { background: var(--coral); }
+.comp-table td { padding: 16px 20px; font-size: 13px; color: var(--slate); border-top: 1px solid var(--border); }
+.comp-table td:first-child { font-weight: 600; color: var(--navy); }
+.comp-table tr:nth-child(even) td { background: var(--bg); }
+.comp-check { color: var(--coral); font-weight: 700; }
+.comp-x { color: var(--slate-light); }
+
+/* FAQ */
+.faq { background: var(--white); }
+.faq-list { max-width:760px; display:flex; flex-direction:column; gap:10px; margin-top:40px; }
+.faq-item { border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
+.faq-q { width:100%; background:none; border:none; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:var(--navy); cursor:pointer; text-align:left; transition:background 0.15s; }
+.faq-q:hover { background:var(--coral-pale); }
+.faq-chevron { width:18px; height:18px; flex-shrink:0; transition:transform 0.25s; }
+.faq-chevron path { stroke:var(--slate); stroke-width:2; fill:none; }
+.faq-a { max-height:0; overflow:hidden; transition:max-height 0.3s ease; font-size:14px; color:var(--slate); line-height:1.7; }
+.faq-a-inner { padding:0 22px 18px; }
+.faq-item.open .faq-a { max-height:220px; }
+.faq-item.open .faq-chevron { transform:rotate(180deg); }
+
+/* CTA */
+.cta-band { background: var(--coral); padding: 64px 2rem; text-align: center; position: relative; overflow: hidden; }
+.cta-band::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 0%, rgba(255,255,255,0.12) 0%, transparent 55%); }
+.cta-band h2 { font-family:'DM Serif Display',serif; font-size:clamp(24px,3vw,36px); color:var(--white); margin-bottom:12px; position:relative; }
+.cta-band p { font-size:16px; color:rgba(255,255,255,0.85); margin-bottom:32px; position:relative; max-width: 600px; margin-left:auto; margin-right:auto; }
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; position:relative; }
+.btn-cta-white { background:var(--white); color:var(--coral); padding:15px 32px; border-radius:10px; font-weight:600; font-size:15px; text-decoration:none; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all 0.2s; display:inline-flex; align-items:center; gap:8px; }
+.btn-cta-white:hover { background:rgba(255,255,255,0.9); transform:translateY(-1px); }
+.btn-cta-outline { background:transparent; color:var(--white); padding:15px 32px; border-radius:10px; font-weight:600; font-size:15px; text-decoration:none; border:1.5px solid rgba(255,255,255,0.4); transition:all 0.2s; display:inline-flex; align-items:center; gap:8px; }
+.btn-cta-outline:hover { background:rgba(255,255,255,0.12); }
+
+footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 48px 2rem 28px; }
+.footer-inner { max-width: 1120px; margin: 0 auto; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); gap: 40px; flex-wrap: wrap; }
+.footer-brand-name { font-family: 'DM Serif Display',serif; font-size: 18px; color: var(--white); }
+.footer-brand p { font-size: 13px; margin-top: 10px; max-width: 260px; }
+.footer-cols { display: flex; gap: 48px; flex-wrap: wrap; }
+.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 8px; transition: color 0.15s; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { display: flex; justify-content: space-between; padding-top: 22px; flex-wrap: wrap; gap: 10px; font-size: 12px; }
+
+.modal-overlay { display:none; position:fixed; inset:0; z-index:200; background:rgba(0,0,0,0.55); align-items:center; justify-content:center; padding:2rem; }
+.modal-overlay.open { display:flex; }
+.modal { background:var(--white); border-radius:var(--radius-lg); padding:40px; max-width:480px; width:100%; position:relative; box-shadow:var(--shadow-lg); animation:mIn 0.22s ease; }
+@keyframes mIn { from{opacity:0;transform:scale(0.95);}to{opacity:1;transform:none;} }
+.modal-x { position:absolute; top:14px; right:14px; background:none; border:none; cursor:pointer; font-size:18px; color:var(--slate); width:32px; height:32px; border-radius:6px; }
+.modal-x:hover { background:var(--bg); }
+.modal h2 { font-family:'DM Serif Display',serif; font-size:24px; color:var(--navy); margin-bottom:6px; }
+.modal p { font-size:14px; color:var(--slate); margin-bottom:22px; }
+.fg { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+.fg label { font-size:13px; font-weight:600; color:var(--navy); }
+.fg input, .fg select { padding:11px 14px; border:1.5px solid var(--border); border-radius:8px; font-family:'DM Sans',sans-serif; font-size:14px; color:var(--text); outline:none; transition:border-color 0.2s; }
+.fg input:focus, .fg select:focus { border-color:var(--coral); box-shadow:0 0 0 3px rgba(193,80,31,0.12); }
+.modal-sub { width:100%; background:var(--coral); color:var(--white); padding:14px; border:none; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; cursor:pointer; }
+.modal-sub:hover { background:#a8451b; }
+.success-state { display:none; text-align:center; padding:20px 0; }
+.success-state h3 { font-family:'DM Serif Display',serif; font-size:22px; color:var(--navy); margin:16px 0 8px; }
+.success-state p { font-size:14px; color:var(--slate); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-mark"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.25 3.75 10.15 9 11.4C17.25 23.15 21 18.25 21 13V7l-9-5z"/></svg></div>
+    <div><div class="nav-name">Guidance Plus</div><div class="nav-sub">Employee &amp; Employer Benefits</div></div>
+  </a>
+  <div class="nav-right">
+    <a href="pfl-dbl.html">PFL &amp; DBL</a>
+    <a href="section-125.html">Section 125</a>
+    <a href="voluntary-benefits.html">Voluntary Benefits</a>
+    <a href="payroll-financing.html" class="active">Payroll Financing</a>
+    <a href="#quote" class="nav-cta">Get a Free Quote</a>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="index.html">Home</a> &nbsp;›&nbsp; Payroll Financing</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Revolving Credit for Payroll</div>
+      <h1>Never Miss a Payroll <em>Again</em></h1>
+      <p class="hero-lead">A dedicated line of credit — built specifically to cover payroll when cash flow is tight. Apply once, get approved for a credit limit, and draw funds whenever you need them. Repay, and your full credit line is available again.</p>
+      <div class="hero-actions">
+        <button class="btn-coral" onclick="openModal()">Check My Eligibility →</button>
+        <a href="#how" class="btn-ghost">See How It Works ↓</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-title">How the credit line works</div>
+      <div class="hc-row">
+        <div class="hc-num">1</div>
+        <div>
+          <div class="hc-label">Get approved for a credit limit</div>
+          <div class="hc-desc">Based on your business banking history — up to $500,000 available.</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-num">2</div>
+        <div>
+          <div class="hc-label">Draw funds only when needed</div>
+          <div class="hc-desc">No cost to have the credit line in place — you only pay when you use it.</div>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-num">3</div>
+        <div>
+          <div class="hc-label">Repay, then it's available again</div>
+          <div class="hc-desc">Your full credit limit resets after repayment — no new application needed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY YOU NEED THIS -->
+<section class="why" id="why">
+  <div class="inner">
+    <div class="tag">Why It Matters</div>
+    <h2 class="heading">Why your business needs a payroll safety net</h2>
+    <p class="sub">Cash flow gaps don't mean your business is unhealthy — they're simply a timing problem. Here's why having a standby credit line specifically for payroll makes sense for almost every employer.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8v2m0 12v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2m16 0h2"/></svg></div>
+        <div>
+          <h3>Payroll doesn't wait for receivables</h3>
+          <p>If you bill clients, insurance companies, or government programs, payment can take 30, 60, even 90+ days — but your team still needs to be paid every week or two. A revolving credit line bridges that gap without disrupting your business.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+        <div>
+          <h3>Protect employee trust</h3>
+          <p>Few things damage morale and retention faster than a missed or delayed paycheck. Having standby funding in place means you never have to have that conversation with your team — even during a slow season or unexpected expense.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+        <div>
+          <h3>Smooth out seasonal swings</h3>
+          <p>Many industries — home care, construction, hospitality, retail — see predictable seasonal dips. A standing credit line lets you keep your full team employed and ready for your busy season, instead of scrambling to rehire and retrain.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+        <div>
+          <h3>Fund growth without giving up equity</h3>
+          <p>Adding new employees, opening a new location, or taking on a large new contract all increase payroll obligations before the new revenue arrives. A credit line designed for payroll lets you grow on your own timeline.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <div>
+          <h3>A backstop for the unexpected</h3>
+          <p>A large client payment delayed, an equipment breakdown, an unplanned expense — any of these can suddenly strain the cash you'd planned to use for payroll. Having a credit line on standby means one surprise doesn't become a crisis.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></div>
+        <div>
+          <h3>Faster &amp; simpler than a bank loan</h3>
+          <p>Traditional bank lines of credit often require strong financials, years of tax returns, and weeks of underwriting. Payroll-focused financing is designed for speed — approval based primarily on your recent business banking activity.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CONCEPT -->
+<section class="concept" id="concept">
+  <div class="inner">
+    <div class="concept-grid">
+      <div>
+        <div class="tag">The Concept</div>
+        <h2 class="heading">Think of it as an emergency fund for your payroll account.</h2>
+        <p class="sub">A revolving payroll credit line is fundamentally different from a traditional loan. You're approved for a credit limit, and that limit sits ready and waiting — at no cost — until the day you actually need it.</p>
+        <div class="eligibility-box">
+          <div class="eb-title">Typical eligibility guidelines</div>
+          <ul class="eb-list">
+            <li><span class="eb-dot"></span>At least 2 years in business</li>
+            <li><span class="eb-dot"></span>At least 5 employees on payroll</li>
+            <li><span class="eb-dot"></span>At least $25,000 in monthly revenue</li>
+            <li><span class="eb-dot"></span>Active business bank account with regular activity</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="concept-visual">
+          <div class="cv-title">What's available to you</div>
+          <div class="cv-sub">Illustrative example — based on standard payroll financing terms</div>
+          <div class="cv-row">
+            <div class="cv-label">Approved credit limit (up to)</div>
+            <div class="cv-val">$500,000</div>
+          </div>
+          <div class="cv-row">
+            <div class="cv-label">Cost while unused</div>
+            <div class="cv-val">$0</div>
+          </div>
+          <div class="cv-row">
+            <div class="cv-label">Funds available after approval</div>
+            <div class="cv-val">~24 hrs</div>
+          </div>
+          <div class="cv-row">
+            <div class="cv-label">Typical repayment window</div>
+            <div class="cv-val">1–4 weeks</div>
+          </div>
+          <div class="cv-highlight">
+            <strong>The key idea:</strong> approval doesn't mean you've borrowed anything. It means the funds are sitting in reserve, ready to be drawn the moment you need them — and automatically available again once repaid.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="inner">
+    <div class="how-header">
+      <div class="tag">The Process</div>
+      <h2 class="heading">From application to funded — in days, not weeks</h2>
+      <p class="sub">We help you get connected with a payroll financing partner and guide you through a straightforward, document-light application process.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">1</div>
+        <h4>Apply</h4>
+        <div class="how-time">~5 minutes</div>
+        <p>Provide basic business information and recent bank statements. No tax returns, P&amp;L statements, or personal financial disclosures required.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">2</div>
+        <h4>Get approved</h4>
+        <div class="how-time">~2 business days</div>
+        <p>Underwriting reviews your banking activity and issues a credit limit based on your business's cash flow patterns.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">3</div>
+        <h4>Hold it in reserve</h4>
+        <div class="how-time">No cost</div>
+        <p>Your credit line sits ready — completely free until the day you choose to draw on it for an upcoming payroll.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">4</div>
+        <h4>Request funds</h4>
+        <div class="how-time">~1 business day</div>
+        <p>When you need it, log in, request the amount, and choose your repayment window — typically 1 to 4 weeks.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">5</div>
+        <h4>Repay &amp; reuse</h4>
+        <div class="how-time">Ongoing</div>
+        <p>Once repaid, your full credit limit is available again immediately — no reapplication required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison">
+  <div class="inner">
+    <div class="tag">Compare Your Options</div>
+    <h2 class="heading">How payroll financing stacks up</h2>
+    <p class="sub">Compared to traditional bank loans and lines of credit, payroll-specific financing is designed to be faster, simpler, and lower-commitment.</p>
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="feature-col">Payroll Financing</th>
+            <th>Traditional Bank Line</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Application time</td>
+            <td><span class="comp-check">✓</span> ~5 minutes</td>
+            <td>Days to weeks of paperwork</td>
+          </tr>
+          <tr>
+            <td>Approval time</td>
+            <td><span class="comp-check">✓</span> ~2 business days</td>
+            <td>Often 2–6 weeks</td>
+          </tr>
+          <tr>
+            <td>Tax returns required</td>
+            <td><span class="comp-check">✓</span> Not required</td>
+            <td><span class="comp-x">✗</span> Multiple years required</td>
+          </tr>
+          <tr>
+            <td>Personal financial statements</td>
+            <td><span class="comp-check">✓</span> Not required</td>
+            <td><span class="comp-x">✗</span> Often required</td>
+          </tr>
+          <tr>
+            <td>Cost while unused</td>
+            <td><span class="comp-check">✓</span> $0</td>
+            <td>May include maintenance fees</td>
+          </tr>
+          <tr>
+            <td>Credit score impact to apply</td>
+            <td><span class="comp-check">✓</span> No hard pull</td>
+            <td>Hard credit inquiry</td>
+          </tr>
+          <tr>
+            <td>Designed specifically for payroll</td>
+            <td><span class="comp-check">✓</span> Yes</td>
+            <td><span class="comp-x">✗</span> General purpose</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="inner">
+    <div class="tag">Common Questions</div>
+    <h2 class="heading">Payroll financing — what employers ask</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is this the same as a traditional business loan?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">No. A traditional loan gives you a lump sum upfront that you immediately begin repaying with interest. A payroll financing credit line is different — you're approved for a limit, but you don't owe anything and pay nothing until you actually choose to draw funds. Many businesses get approved and never need to use it; it simply sits as a safety net.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Will applying affect my credit score?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Typically, no. Most payroll financing applications use a soft review of your business banking activity rather than a hard credit pull, so applying to check your eligibility does not impact your personal or business credit score.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What can the funds be used for?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">This type of financing is purpose-built for payroll — covering employee wages, salaries, and related payroll obligations. It's generally not intended for other business expenses such as rent, inventory, or contractor payments outside of standard payroll, which keeps the underwriting process fast and the terms favorable.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">My business has been denied credit before — can I still qualify?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Possibly, yes. Payroll financing underwriting focuses primarily on your recent business bank activity rather than your overall credit history, years of profitability, or personal net worth. Many businesses that have been turned down by traditional banks — including newer businesses, nonprofits, and businesses carrying other debt — have been approved for payroll-specific credit lines.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How fast can I actually get funds if I need them?
+          <svg class="faq-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Once you're approved and have a credit line in place, requesting funds typically takes just a few clicks. Funds are generally wired to your account within one business day — often the same day if requested before early afternoon. This is significantly faster than applying for a new loan each time you have a cash flow gap.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band" id="quote">
+  <h2>Put a payroll safety net in place — before you need it.</h2>
+  <p>We'll connect you with a payroll financing partner and walk you through the application. There's no cost to apply, no impact to your credit, and no obligation to ever draw funds.</p>
+  <div class="cta-btns">
+    <button class="btn-cta-white" onclick="openModal()">Check My Eligibility →</button>
+    <a href="index.html" class="btn-cta-outline">← Back to All Services</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <div style="width:36px;height:36px;background:rgba(255,255,255,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#c9a24a" d="M12 2L3 7v6c0 5.25 3.75 10.15 9 11.4C17.25 23.15 21 18.25 21 13V7l-9-5z"/></svg>
+          </div>
+          <span class="footer-brand-name">Guidance Plus</span>
+        </div>
+        <p>Licensed employee &amp; employer benefits broker serving New York employers of all sizes.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="pfl-dbl.html">PFL &amp; Disability (DBL)</a>
+          <a href="section-125.html">Section 125 / Cafeteria Plans</a>
+          <a href="voluntary-benefits.html">Voluntary Benefits</a>
+          <a href="payroll-financing.html">Payroll Financing</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:info@guidanceplusllc.com">info@guidanceplusllc.com</a>
+          <a href="tel:+15165550100">(516) 555-0100</a>
+          <a href="#">Hicksville, NY</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Guidance Plus. All rights reserved.</span>
+      <span>Licensed Insurance Broker — State of New York</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <div id="formContent">
+      <h2>Check Your Payroll Financing Eligibility</h2>
+      <p>Tell us a bit about your business and we'll let you know your options — no impact to your credit.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="Jane" /></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith" /></div>
+      </div>
+      <div class="fg"><label>Business Name</label><input type="text" placeholder="Your Business LLC" /></div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="jane@yourbusiness.com" /></div>
+      <div class="fg"><label>Phone</label><input type="tel" placeholder="(516) 555-0100" /></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="fg"><label>Years in Business</label>
+          <select><option>Less than 1 year</option><option>1–2 years</option><option>2–5 years</option><option>5+ years</option></select>
+        </div>
+        <div class="fg"><label>Number of Employees</label>
+          <select><option>1–4</option><option>5–10</option><option>11–25</option><option>26–50</option><option>50+</option></select>
+        </div>
+      </div>
+      <button class="modal-sub" onclick="submitModal()">Check My Eligibility →</button>
+    </div>
+    <div class="success-state" id="successState">
+      <svg width="52" height="52" viewBox="0 0 52 52"><circle cx="26" cy="26" r="25" fill="#c1501f"/><path d="M14 26l9 9 15-15" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      <h3>Request Received!</h3>
+      <p>We'll review your information and reach out within one business day to discuss your payroll financing options.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal() { document.getElementById('modal').classList.add('open'); }
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+function submitModal() {
+  document.getElementById('formContent').style.display = 'none';
+  document.getElementById('successState').style.display = 'block';
+}
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!open) item.classList.add('open');
+}
+</script>
+</body>
+</html>
